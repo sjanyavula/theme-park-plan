@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Theme Park Plan</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#121a2b;
+      --text:#e9eefc;
+      --muted:#a9b4d0;
+      --accent:#6ea8fe;
+      --border:rgba(255,255,255,.10);
+      --chip:rgba(255,255,255,.05);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1100px 700px at 15% 10%, rgba(110,168,254,.18), transparent 60%),
+                  radial-gradient(1100px 700px at 85% 15%, rgba(68,209,157,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    .wrap{max-width:980px; margin:0 auto; padding:22px 14px 60px;}
+    .header{
+      padding:18px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(18,26,43,.78);
+      backdrop-filter: blur(10px);
+    }
+    h1{margin:0; font-size:26px}
+    .sub{margin:8px 0 0; color:var(--muted)}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px}
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--chip);
+      font-size:13px;
+      color:var(--text);
+    }
+    .grid{display:grid; grid-template-columns: 1fr; gap:14px; margin-top:14px;}
+    .card{
+      padding:16px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(18,26,43,.78);
+      backdrop-filter: blur(10px);
+    }
+    .btnrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;}
+    button{
+      cursor:pointer;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      padding:11px 12px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:14px;
+    }
+    button:hover{border-color: rgba(110,168,254,.45)}
+    button.active{
+      background: rgba(110,168,254,.16);
+      border-color: rgba(110,168,254,.45);
+    }
+    .muted{color:var(--muted)}
+    .section{display:none; margin-top:14px;}
+    .section.active{display:block;}
+    h2{margin:0 0 10px; font-size:18px;}
+    h3{margin:14px 0 8px; font-size:15px;}
+    ul{margin:8px 0 0; padding-left:18px;}
+    li{margin:6px 0;}
+    .note{
+      margin-top:12px;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+    }
+    .footer{margin-top:14px; text-align:center; color:var(--muted); font-size:12px;}
+    .topbar{display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;}
+    .smallbtn{
+      padding:10px 12px; border-radius:12px; font-weight:700; font-size:13px;
+      background:rgba(255,255,255,.03);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="topbar">
+        <div>
+          <h1>🎢 Theme Park Ticket & Park Selection Guide</h1>
+          <div class="sub">Click a park name below to view details • Group: 5 kids (2,4,7,9,10) + 6 adults (35+)</div>
+        </div>
+        <button class="smallbtn" id="btnCopy" type="button">📋 Copy Summary</button>
+      </div>
+
+      <div class="chips">
+        <div class="chip"><b>Disney:</b> ~20 min</div>
+        <div class="chip"><b>Universal:</b> ~30 min</div>
+        <div class="chip"><b>SeaWorld:</b> ~30 min</div>
+        <div class="chip"><b>LEGOLAND:</b> ~1 hr</div>
+        <div class="chip"><b>NASA:</b> ~2 hrs</div>
+      </div>
+
+      <div class="btnrow" role="tablist" aria-label="Park selector">
+        <button type="button" class="parkbtn active" data-target="disney">🏰 Disney</button>
+        <button type="button" class="parkbtn" data-target="universal">🎢 Universal</button>
+        <button type="button" class="parkbtn" data-target="seaworld">🐬 SeaWorld</button>
+        <button type="button" class="parkbtn" data-target="legoland">🧱 LEGOLAND</button>
+        <button type="button" class="parkbtn" data-target="nasa">🚀 NASA</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+
+        <!-- DISNEY -->
+        <div id="disney" class="section active">
+          <h2>🏰 Disney World</h2>
+          <p class="muted">Distance from hotel: ~20 minutes drive • Transport: Uber/Lyft recommended (parking is expensive)</p>
+
+          <h3>🎟️ Disney World Ticket (Simple Explanation)</h3>
+          <p>Disney World has different ticket types based on how many parks you want to visit in a day. You must pick the ticket type when you buy it.</p>
+
+          <h3>🎢 1-Park Per Day Ticket (Most common & simple)</h3>
+          <ul>
+            <li>Visit only <b>ONE</b> Disney park per day</li>
+            <li>You must choose <b>which park</b> you will visit that day</li>
+            <li>On another day, you can visit a <b>different park</b></li>
+          </ul>
+
+          <h3>📍 Disney has 4 main parks</h3>
+          <ul>
+            <li>Magic Kingdom</li>
+            <li>EPCOT</li>
+            <li>Disney’s Hollywood Studios</li>
+            <li>Disney’s Animal Kingdom</li>
+          </ul>
+
+          <div class="note">
+            👉 <b>Example:</b> If you buy a ticket for <b>Magic Kingdom</b>, you can enter only <b>Magic Kingdom</b> that day (not EPCOT or other parks).
+          </div>
+
+          <h3>✅ Best Disney Park for our group</h3>
+          <p><b>Magic Kingdom – BEST OVERALL CHOICE</b></p>
+          <ul>
+            <li>Best mix of toddler rides + older kids + adults</li>
+            <li>Many rides with no height restriction</li>
+            <li>Characters, parades, fireworks</li>
+            <li>Evening shows after <b>6:00 PM</b></li>
+          </ul>
+
+          <h3>Good rides for all ages</h3>
+          <ul>
+            <li>It’s a Small World (2–4 yrs)</li>
+            <li>Peter Pan</li>
+            <li>Dumbo</li>
+            <li>Pirates of the Caribbean</li>
+            <li>Buzz Lightyear</li>
+            <li>Seven Dwarfs Mine Train (7+ yrs)</li>
+            <li>Parade & fireworks (everyone ❤️)</li>
+          </ul>
+
+          <h3>Skipping (this trip)</h3>
+          <ul>
+            <li>EPCOT – more adult-focused, fewer rides for toddlers</li>
+            <li>Hollywood Studios – better for 8+ kids, more thrill rides</li>
+          </ul>
+
+          <div class="note">
+            👉 <b>Plan:</b> Decide the Disney park first, then buy the ticket only for that park/day.
+          </div>
+        </div>
+
+        <!-- UNIVERSAL -->
+        <div id="universal" class="section">
+          <h2>🎢 Universal Orlando</h2>
+          <p class="muted">Distance from hotel: ~30 minutes drive</p>
+
+          <h3>🎟️ Universal Tickets (Simple Explanation)</h3>
+          <p>Universal tickets are priced based on how many parks you visit in one day.</p>
+
+          <h3>🎢 1-Park, 1-Day Ticket (Cheaper)</h3>
+          <ul>
+            <li>Visit only <b>ONE</b> park in a day</li>
+            <li>Choose either: <b>Universal Studios Florida</b> OR <b>Islands of Adventure</b></li>
+            <li>You cannot enter the other park the same day</li>
+          </ul>
+
+          <h3>🎢 2-Park, 1-Day Ticket (More expensive)</h3>
+          <ul>
+            <li>Visit <b>BOTH</b> parks in the same day (Universal Studios + Islands)</li>
+            <li>Includes the <b>Harry Potter train</b> between the parks</li>
+          </ul>
+
+          <h3>📍 Universal parks list</h3>
+          <ul>
+            <li>Universal Studios Florida</li>
+            <li>Islands of Adventure</li>
+            <li>Epic Universe (separate ticket)</li>
+            <li>Volcano Bay (water park)</li>
+          </ul>
+
+          <h3>✅ Best Universal park for our group</h3>
+          <p><b>Islands of Adventure – BEST CHOICE</b></p>
+          <ul>
+            <li>Dr. Seuss area for toddlers</li>
+            <li>Fun rides for 7–10 yr kids</li>
+            <li>Thrill rides for adults</li>
+          </ul>
+
+          <h3>Skipping (this trip)</h3>
+          <ul>
+            <li>Universal Studios Florida – fewer toddler rides</li>
+            <li>Epic Universe – mostly thrill-based</li>
+            <li>Volcano Bay – tiring for small kids</li>
+          </ul>
+
+          <div class="note">
+            👉 <b>Plan:</b> Choose one Universal park per day and buy tickets only for that park/day.
+          </div>
+        </div>
+
+        <!-- SEAWORLD -->
+        <div id="seaworld" class="section">
+          <h2>🐬 SeaWorld Orlando</h2>
+          <p class="muted">Distance from hotel: ~30 minutes drive</p>
+
+          <h3>🎟️ Ticket</h3>
+          <ul>
+            <li>Single park ticket</li>
+          </ul>
+
+          <h3>Best for</h3>
+          <ul>
+            <li>Animal experiences (shows, aquariums)</li>
+            <li>Bigger kids (7+ years)</li>
+            <li>Adults who enjoy rides + animals</li>
+          </ul>
+
+          <div class="note">
+            📌 <b>Note:</b> Fewer rides for toddlers. Good option for a lighter park day.
+          </div>
+        </div>
+
+        <!-- LEGOLAND -->
+        <div id="legoland" class="section">
+          <h2>🧱 LEGOLAND Florida</h2>
+          <p class="muted">Distance from hotel: ~1 hour drive</p>
+
+          <h3>🎟️ Ticket</h3>
+          <ul>
+            <li>One park ticket (all rides in one park)</li>
+          </ul>
+
+          <h3>Best for</h3>
+          <ul>
+            <li>Toddlers and young kids (2–7 years)</li>
+            <li>Relaxed, colorful, kid-friendly environment</li>
+            <li>Shorter lines and less walking</li>
+          </ul>
+
+          <div class="note">
+            ✅ <b>Why we like it:</b> All rides are kids-focused and it’s a great rest day between big parks.
+          </div>
+        </div>
+
+        <!-- NASA -->
+        <div id="nasa" class="section">
+          <h2>🚀 NASA – Kennedy Space Center</h2>
+          <p class="muted">Distance from hotel: ~2 hours drive</p>
+
+          <h3>🎟️ Ticket</h3>
+          <ul>
+            <li>Single-day admission</li>
+          </ul>
+
+          <h3>Best for</h3>
+          <ul>
+            <li>Educational experience</li>
+            <li>Kids 7+ years and adults</li>
+          </ul>
+
+          <div class="note">
+            📌 <b>Note:</b> Long drive. Best planned as a full-day trip. Optional depending on energy level.
+          </div>
+        </div>
+
+        <!-- FINAL NOTE -->
+        <div class="note" style="margin-top:18px;">
+          ✅ <b>Final Important Note (For Everyone):</b><br>
+          For <b>Disney</b> and <b>Universal</b>, we will decide the park first, buy tickets only for the selected park/day, and avoid multi-park tickets unless needed.
+        </div>
+
+        <div class="footer">Share this file or host it to get a URL everyone can open.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll(".parkbtn");
+    const sections = document.querySelectorAll(".section");
+
+    function showSection(id){
+      sections.forEach(s => s.classList.remove("active"));
+      const target = document.getElementById(id);
+      if (!target) return;
+      target.classList.add("active");
+      buttons.forEach(b => b.classList.toggle("active", b.dataset.target === id));
+      history.replaceState(null, "", "#" + id);
+    }
+
+    buttons.forEach(btn => btn.addEventListener("click", () => showSection(btn.dataset.target)));
+
+    // Load section from URL hash
+    const hash = (location.hash || "").replace("#","");
+    if(hash && document.getElementById(hash)) showSection(hash);
+
+    async function copyText(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        alert("Copied!");
+      }catch(e){
+        alert("Couldn’t auto-copy. Please copy manually.");
+      }
+    }
+
+    document.getElementById("btnCopy").addEventListener("click", () => {
+      const summary =
+`Theme Park Plan
+- Disney (~20 min): Magic Kingdom (best for mixed ages)
+- Universal (~30 min): Islands of Adventure (best mix)
+- SeaWorld (~30 min): animals + rides (best for 7+)
+- LEGOLAND (~1 hr): best for 2–7 yrs
+- NASA (~2 hrs): full-day educational (best for 7+)
+
+Ticket Note:
+For Disney and Universal, we will decide the park first and buy tickets only for that park/day.`;
+      copyText(summary);
+    });
+  </script>
+</body>
+</html>
